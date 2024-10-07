@@ -11,7 +11,7 @@ interface User {
   role: string;
   link?:string;
   description?:string;
-  image:
+  image?:string;
 }
 
 // Define the context types
@@ -30,7 +30,7 @@ const UserContext = createContext<UserContextProps>({
 export const UserProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
+    const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
       if (firebaseUser) {
         const { displayName, email, uid } = firebaseUser;
         const CustomUser:User = {
@@ -51,6 +51,7 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
             CustomUser.role = userData.role || '';
             CustomUser.link = userData.link || '';
             CustomUser.description = userData.description || '';
+            CustomUser.image = userData.image;
           }
         }catch(error){
           console.error("Error fetching user data", error)
