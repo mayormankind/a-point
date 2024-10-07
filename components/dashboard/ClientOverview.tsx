@@ -1,6 +1,6 @@
 import { Box, Heading, SimpleGrid, Text } from '@chakra-ui/react';
 
-const CompanyOverview = () => {
+const ClientOverview = () => {
   return (
     <Box>
       <Heading as="h2" size="lg" mb="6">
@@ -30,4 +30,4 @@ const CompanyOverview = () => {
   );
 };
 
-export default CompanyOverview;
+export default ClientOverview;
