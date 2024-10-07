@@ -67,7 +67,7 @@ const AvailabilitySettings = () => {
         <label className="block text-sm mb-2">Available Start Time:</label>
         <TimePicker
           value={availableStartTime}
-          onChange={setAvailableStartTime}
+          onChange={(value) =>setAvailableStartTime(value as string)}
           className="w-full"
         />
       </div>
@@ -75,7 +75,7 @@ const AvailabilitySettings = () => {
         <label className="block text-sm mb-2">Available End Time:</label>
         <TimePicker
           value={availableEndTime}
-          onChange={setAvailableEndTime}
+          onChange={(value) =>setAvailableEndTime(value as string)}
           className="w-full"
         />
       </div>
