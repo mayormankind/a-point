@@ -28,7 +28,7 @@ if (typeof window !== "undefined") {
   const analytics = getAnalytics(app);
 }
 
-export {auth , provider, db, storage};
+export {auth , provider, db, storage, app};
 
 
 export default app;
