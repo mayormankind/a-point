@@ -31,7 +31,7 @@ const Navbar = ( userType : any) => {
           {clientNavs.map(nav => (
             <li title={nav.label} onClick={()=>setClient(nav.label)} className={`${client === nav.label ? 'border-t-4 w-full border-blue-600 transition font-semibold duration-300 text-gray-800 py-3' : 'py-4 text-gray-600'} px-2`}>
               <Link href={nav.ref}>
-                <div className="flex flex-col items-center">
+                <div className="flex flex-col items-center" key={nav.label}>
                   <IconButton aria-label={nav.label} icon={client === nav.label ? nav.iconActive : nav.icon} color='blue.600' fontSize='22px'/>
                 </div>  
               </Link>
@@ -43,7 +43,7 @@ const Navbar = ( userType : any) => {
           {companyNavs.map(nav => (
             <li title={nav.label} onClick={()=>setCompany(nav.label)} className={`${company === nav.label ? 'border-t-4 border-blue-600 transition font-semibold duration-300 text-gray-800' : 'text-gray-600'}`}>
               <Link href={nav.ref}>
-                <div className="flex flex-col items-center">
+                <div className="flex flex-col items-center" key={nav.label}>
                     <IconButton aria-label={nav.label} icon={company === nav.label ? nav.iconActive : nav.icon} variant='ghost' fontSize='22px' className='h-8 w-8'/>
                 </div>
               </Link>

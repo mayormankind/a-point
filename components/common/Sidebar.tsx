@@ -34,13 +34,13 @@ const Sidebar = ({ userType }: SidebarProps) => {
           {userType === 'client' ? (
             <ul className='flex flex-col'>
               {clientNavs.map(nav => (
-                <li onClick={()=>setClient(nav.label)} className={`${client === nav.label ? 'bg-white border-l-4 border-white transition duration-300 bg-opacity-10 backdrop-blur-xl' : ''} py-3 px-2`}><Link href={nav.ref}>{nav.label}</Link></li>
+                <li onClick={()=>setClient(nav.label)} key={nav.label} className={`${client === nav.label ? 'bg-white border-l-4 border-white transition duration-300 bg-opacity-10 backdrop-blur-xl' : ''} py-3 px-2`}><Link href={nav.ref}>{nav.label}</Link></li>
               ))}
             </ul>
           ) : (
             <ul className='flex flex-col'>
               {consultantNavs.map(nav => (
-                <li onClick={()=>setConsultant(nav.label)} className={`${consultant === nav.label ? 'bg-white border-l-4 border-white transition duration-300 bg-opacity-10 backdrop-blur-xl' : ''} py-3 px-2`}><Link href={nav.ref}>{nav.label}</Link></li>
+                <li onClick={()=>setConsultant(nav.label)} key={nav.label} className={`${consultant === nav.label ? 'bg-white border-l-4 border-white transition duration-300 bg-opacity-10 backdrop-blur-xl' : ''} py-3 px-2`}><Link href={nav.ref}>{nav.label}</Link></li>
               ))}
             </ul>
           )}
