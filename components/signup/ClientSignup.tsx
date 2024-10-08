@@ -39,10 +39,10 @@ const validationSchema = Yup.object().shape({
 
 const ClientSignup = () => {
     const [uploadProgress, setUploadProgress] = useState(0);
+    const router = useRouter();
 
-    const handleSignup = async (values: FormValues, { resetForm }: FormikHelpers<FormValues>) => {
+    const HandleSignup = async (values: FormValues, { resetForm }: FormikHelpers<FormValues>) => {
         const { displayName, email, password, profilePicture } = values;
-        const router = useRouter();
 
         try {
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
@@ -100,7 +100,7 @@ const ClientSignup = () => {
           profilePicture: null as File | null,
         }}
         validationSchema={validationSchema}
-        onSubmit={handleSignup}
+        onSubmit={HandleSignup}
       >
         {({ isSubmitting, setFieldValue }) => (
           <Form className="flex flex-col gap-4">

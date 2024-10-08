@@ -43,9 +43,10 @@ const validationSchema = Yup.object().shape({
 
 export default function CompanySignup() {
   // Define the signup handler
+  const router = useRouter();
+  
   const handleSignup = async (values: FormValues, { resetForm }: FormikHelpers<FormValues>) => {
     const { displayName, email, address, contactPerson, password, profilePicture } = values;
-    const router = useRouter();
 
     try {
       // Create user in Firebase Authentication

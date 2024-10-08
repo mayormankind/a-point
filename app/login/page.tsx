@@ -25,8 +25,9 @@ const validationSchema = Yup.object().shape({
 
 export default function Login() {
   const [ loading, setLoading ] = useState(false);
-  const handleLogin = async (values:FormValues)=> {
-    const router =  useRouter();
+  const router =  useRouter();
+  
+  const HandleLogin = async (values:FormValues)=> {
     try {
       const userCredential = await signInWithEmailAndPassword(auth, values.email, values.password);
       const user = userCredential.user;
@@ -54,7 +55,7 @@ export default function Login() {
         <Formik
           initialValues={{ email: '', password: '' }}
           validationSchema={validationSchema}
-          onSubmit={handleLogin}
+          onSubmit={HandleLogin}
         >
           {({ isSubmitting }) => (
             <Form className="flex flex-col gap-4 text-black">
