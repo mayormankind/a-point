@@ -12,7 +12,7 @@ import Button from '@/components/common/Button';
 import Input from '@/components/common/Input';
 import Link from 'next/link';
 import { v4 as uuid } from 'uuid';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 // Define the type for the form values
 interface FormValues {
@@ -44,7 +44,7 @@ const validationSchema = Yup.object().shape({
 export default function CompanySignup() {
   // Define the signup handler
   const router = useRouter();
-  
+
   const handleSignup = async (values: FormValues, { resetForm }: FormikHelpers<FormValues>) => {
     const { displayName, email, address, contactPerson, password, profilePicture } = values;
 

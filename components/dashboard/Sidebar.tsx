@@ -1,75 +1,11 @@
 "use client"
 
 import { Box, Flex, IconButton, VStack, useBreakpointValue } from '@chakra-ui/react';
-// import { useState } from 'react';
-// import Link from 'next/link'
-
-
-// const Sidebar = () => {
-//   const [isOpen, setIsOpen] = useState(true);
-//   const isMobile = useBreakpointValue({ base: true, lg: false });
-
-//   const toggleSidebar = () => {
-//     setIsOpen(!isOpen);
-//   };
-
-//   return (
-//     <>
-//       {isMobile && (
-//         <IconButton
-//           icon={<FiMenu />}
-//           aria-label="Open Menu"
-//           onClick={toggleSidebar}
-//           m="4"
-//         />
-//       )}
-      
-//       <Box
-//         as="aside"
-//         w={isOpen ? '250px' : '60px'}
-//         bg="blue.700"
-//         color="white"
-//         position="fixed"
-//         h="100%"
-//         transition="width 0.3s"
-//       >
-//         <VStack spacing="6" p="4" align="flex-start">
-//             <Link href={'/dashboard'}>
-//                 <Flex align="center" w="full">
-//                     <IconButton icon={<FiHome />} aria-label="Dashboard" variant="ghost" />
-//                     {isOpen && <Box ml="4">Dashboard</Box>}
-//                 </Flex>
-//             </Link>
-//             <Link href={'/dashboard/appointments'}>
-//                 <Flex align="center" w="full">
-//                     <IconButton icon={<FiCalendar />} aria-label="Appointments" variant="ghost" />
-//                     {isOpen && <Box ml="4">Appointments</Box>}
-//                 </Flex>
-//             </Link>
-//             <Link href={'/dashboard/profile'}>
-//                 <Flex align="center" w="full">
-//                     <IconButton icon={<FiUser />} aria-label="Profile" variant="ghost" />
-//                     {isOpen && <Box ml="4">Profile</Box>}
-//                 </Flex>
-//             </Link>
-//             <Link href={'/login'}>
-//                 <Flex align="center" w="full">
-//                     <IconButton icon={<FiLogOut />} aria-label="Logout" variant="ghost" />
-//                     {isOpen && <Box ml="4">Logout</Box>}
-//                 </Flex>
-//             </Link>
-//         </VStack>
-//       </Box>
-//     </>
-//   );
-// };
-
-// export default Sidebar;
-
 import Link from 'next/link';
 import { useState } from 'react';
 import { RiCalendarScheduleFill, RiCalendarScheduleLine, RiHome2Fill, RiHome2Line, RiSearchFill, RiSearchLine, RiUser2Line, RiUserFill, RiUserLine } from 'react-icons/ri';
 import { FiLogOut } from 'react-icons/fi';
+import { logout, user } from '@/api/context';
 
 
 const Sidebar = ( userType:any ) => {
@@ -95,7 +31,7 @@ const Sidebar = ( userType:any ) => {
 
   return (
     <div className="hidden md:block w-full bg-gray-800 text-white h-screen p-5">
-      <h1 className="text-xl font-bold mb-5">{userType === 'client' ? 'Client' : 'Company'} Dashboard</h1>
+      <h1 className="text-xl font-bold mb-5">{user?.role === 'client' ? 'Client' : 'Company'} Dashboard</h1>
       <nav>
         <div>
           {userType === 'client' ? (

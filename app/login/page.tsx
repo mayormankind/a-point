@@ -9,7 +9,7 @@ import * as Yup from 'yup';
 import { toast } from "react-toastify";
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '@/api/firebase';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 
 interface FormValues {
@@ -26,7 +26,7 @@ const validationSchema = Yup.object().shape({
 export default function Login() {
   const [ loading, setLoading ] = useState(false);
   const router =  useRouter();
-  
+
   const HandleLogin = async (values:FormValues)=> {
     try {
       const userCredential = await signInWithEmailAndPassword(auth, values.email, values.password);

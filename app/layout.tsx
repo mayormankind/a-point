@@ -4,6 +4,7 @@ import "./globals.css";
 import Head from "next/head";
 import Provider from "@/chakra/provider";
 import { ToastContainer } from 'react-toastify';
+import { UserProvider } from '@/api/Context';
 import 'react-toastify/dist/ReactToastify.css';
 
 
@@ -23,8 +24,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Provider>
-          {children}
-          <ToastContainer/>
+          <UserProvider>
+            {children}
+            <ToastContainer/>
+          </UserProvider>
         </Provider>
       </body>
     </html>

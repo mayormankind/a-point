@@ -12,7 +12,7 @@ import { doc, setDoc } from 'firebase/firestore';
 import { auth, db, storage } from '@/api/firebase';
 import { Formik, Form, Field, ErrorMessage, FormikHelpers } from 'formik';
 import * as Yup from 'yup';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 
 interface FormValues {

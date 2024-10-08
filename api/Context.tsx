@@ -63,6 +63,7 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
           console.error("Error fetching user data", error)
         }
         setUser(CustomUser);
+        console.log(user)
       } else {
         setUser(null);
       }
