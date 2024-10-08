@@ -80,7 +80,7 @@ const Sidebar = ( userType:any ) => {
     { label:'Search', ref:'/dashboard/search', icon:<RiSearchLine/>, iconActive:<RiSearchFill/> },
     { label:'Profile', ref:'/dashboard/profile', icon:<RiUserLine/>, iconActive:<RiUserFill/> },
     { label:'Logout', ref:'/login', icon:<FiLogOut/>, iconActive:<FiLogOut/> },
-  ];
+  ]; 
 
   const companyNavs = [
     { label:'Overview', ref:'/dashboard', icon:<RiHome2Line/>, iconActive:<RiHome2Fill/> },

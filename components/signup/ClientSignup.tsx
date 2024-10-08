@@ -1,3 +1,5 @@
+"use client"
+
 import Button from '@/components/common/Button';
 import Input from '@/components/common/Input';
 import Link from 'next/link';
@@ -10,6 +12,7 @@ import { doc, setDoc } from 'firebase/firestore';
 import { auth, db, storage } from '@/api/firebase';
 import { Formik, Form, Field, ErrorMessage, FormikHelpers } from 'formik';
 import * as Yup from 'yup';
+import { useRouter } from 'next/router';
 
 
 interface FormValues {
@@ -39,6 +42,7 @@ const ClientSignup = () => {
 
     const handleSignup = async (values: FormValues, { resetForm }: FormikHelpers<FormValues>) => {
         const { displayName, email, password, profilePicture } = values;
+        const router = useRouter();
 
         try {
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
@@ -74,6 +78,7 @@ const ClientSignup = () => {
       
                   toast.success('Account created successfully!');
                   resetForm(); // Reset the form
+                  router.push('/login');
                 }
               );
             }

@@ -1,3 +1,5 @@
+"use client"
+
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage, FormikHelpers } from 'formik';
 import * as Yup from 'yup';
@@ -10,6 +12,7 @@ import Button from '@/components/common/Button';
 import Input from '@/components/common/Input';
 import Link from 'next/link';
 import { v4 as uuid } from 'uuid';
+import { useRouter } from 'next/router';
 
 // Define the type for the form values
 interface FormValues {
@@ -42,6 +45,7 @@ export default function CompanySignup() {
   // Define the signup handler
   const handleSignup = async (values: FormValues, { resetForm }: FormikHelpers<FormValues>) => {
     const { displayName, email, address, contactPerson, password, profilePicture } = values;
+    const router = useRouter();
 
     try {
       // Create user in Firebase Authentication
@@ -84,6 +88,7 @@ export default function CompanySignup() {
 
             toast.success('Account created successfully!');
             resetForm(); // Reset the form
+            router.push('/login')
           }
         );
       }
