@@ -6,11 +6,14 @@ import Link from 'next/link';
 import React, { useState } from 'react';
 import { FaHome } from 'react-icons/fa';
 import { RiCloseFill, RiMenu4Fill } from 'react-icons/ri';
+import { useUser } from '@/api/Context';
+
 
 export default function Profile() {
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const { user, logout } = useUser();
 
-  const toggleDrawer = () => {
+  const toggleDrawer = ()=> {
     setDrawerOpen(!drawerOpen);
   };
 
@@ -41,13 +44,13 @@ export default function Profile() {
               className="w-20 h-20 rounded-full object-cover"
             />
             <div className="flex flex-col">
-              <h1 className="font-bold text-2xl text-gray-800">Makinde Mayowa</h1>
+              <h1 className="font-bold text-2xl text-gray-800">{user?.displayName}</h1>
               <h3 className="text-gray-600">Career Consultant</h3>
             </div>
           </div>
           <div className="flex flex-col gap-4 text-gray-600">
-            <h3>(234)-704-4082-9383</h3>
-            <h3>mayowamakinde23@gmail.com</h3>
+            <h3>{user?.contactPerson}</h3>
+            <h3>{user?.email}</h3>
           </div>
         </div>
         <Divider />
@@ -63,7 +66,7 @@ export default function Profile() {
             Settings
           </li>
           <hr className="my-2" />
-          <li className="px-6 py-3 text-red-700 cursor-pointer hover:bg-red-500 hover:text-white transition">
+          <li onClick={logout} className="px-6 py-3 text-red-700 cursor-pointer hover:bg-red-500 hover:text-white transition">
             Logout
           </li>
         </ul>
@@ -78,7 +81,7 @@ export default function Profile() {
 
       {/* Main Content Area */}
       <div className="w-full md:w-2/3 lg:w-3/4 bg-white p-6 md:p-10">
-        <h2 className="text-xl font-bold text-gray-800">Welcome, Makinde Mayowa!</h2>
+        <h2 className="text-xl font-bold text-gray-800">Welcome, {user?.displayName}!</h2>
         <p className="text-gray-600 mt-4">
           Here is your profile overview. You can edit your details, check notifications, and manage
           your account settings."

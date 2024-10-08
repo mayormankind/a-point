@@ -4,6 +4,8 @@ import { Flex, IconButton } from '@chakra-ui/react';
 import Link from 'next/link';
 import { useState } from 'react';
 import { RiCalendarScheduleFill, RiCalendarScheduleLine, RiHome2Fill, RiHome2Line, RiSearchFill, RiSearchLine, RiUser2Line, RiUserFill, RiUserLine } from 'react-icons/ri';
+import { useUser } from '@/api/Context';
+
 
 const Navbar = ( userType : any) => {
 
@@ -23,10 +25,11 @@ const Navbar = ( userType : any) => {
 
   const [ client, setClient ] = useState('Overview')
   const [ company, setCompany ] = useState('Overview')
+  const { user } = useUser();
 
   return (
     <div className="fixed bottom-0 w-full bg-white z-10 shadow-lg flex justify-around md:hidden">
-      {userType === 'client' ? (
+      {user?.role === 'client' ? (
         <ul className='flex w-full justify-between'>
           {clientNavs.map(nav => (
             <li key={nav.label} title={nav.label} onClick={()=>setClient(nav.label)} className={`${client === nav.label ? 'border-t-4 w-full border-blue-600 transition font-semibold duration-300 text-gray-800 py-3' : 'py-4 text-gray-600'} px-2`}>
