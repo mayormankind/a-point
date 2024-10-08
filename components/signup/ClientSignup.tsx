@@ -14,14 +14,14 @@ import * as Yup from 'yup';
 
 interface FormValues {
     email: string;
-    fullName: string;
+    displayName: string;
     password: string;
     profilePicture: File | null;
   }
  
 // Define the validation schema using Yup
 const validationSchema = Yup.object().shape({
-  fullName: Yup.string().required('Full name is required'),
+  displayName: Yup.string().required('Full name is required'),
   email: Yup.string().email('Invalid email address').required('Email is required'),
   password: Yup.string().required('Password is required'),
   profilePicture: Yup.mixed()
@@ -38,7 +38,7 @@ const ClientSignup = () => {
     const [uploadProgress, setUploadProgress] = useState(0);
 
     const handleSignup = async (values: FormValues, { resetForm }: FormikHelpers<FormValues>) => {
-        const { fullName, email, password, profilePicture } = values;
+        const { displayName, email, password, profilePicture } = values;
 
         try {
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
@@ -66,7 +66,7 @@ const ClientSignup = () => {
                   // Store additional user information in Firestore
                   await setDoc(doc(db, 'users', user.uid), {
                     uid: user.uid,
-                    fullName,
+                    displayName,
                     email,
                     profileImageUrl,
                     role: 'client',
@@ -89,7 +89,7 @@ const ClientSignup = () => {
 
       <Formik
         initialValues={{
-          fullName: '',
+          displayName: '',
           email: '',
           password: '',
           profilePicture: null as File | null,
@@ -100,9 +100,9 @@ const ClientSignup = () => {
         {({ isSubmitting, setFieldValue }) => (
           <Form className="flex flex-col gap-4">
             <div className="gap-1 flex flex-col">
-              <label htmlFor="fullName" className="text-xs">Full Name</label>
-              <Field name="fullName" placeholder="Enter your Full name" className="border p-2 rounded" />
-              <ErrorMessage name="fullName" component="div" className="text-red-600 text-xs" />
+              <label htmlFor="displayName" className="text-xs">Full Name</label>
+              <Field name="displayName" placeholder="Enter your Full name" className="border p-2 rounded" />
+              <ErrorMessage name="displayName" component="div" className="text-red-600 text-xs" />
             </div>
 
             <div className="gap-1 flex flex-col">

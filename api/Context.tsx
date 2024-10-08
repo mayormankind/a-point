@@ -6,12 +6,14 @@ import { auth, db } from './firebase';
 // Define the user data structure
 interface User {
   uid: string;
-  name: string | null;
+  displayName: string | null;
   email: string | null;
   role: string;
   link?:string;
   description?:string;
-  image?:string;
+  address?:string;
+  contactPerson?:string;
+  profileImageUrl?:string;
 }
 
 // Define the context types
@@ -35,12 +37,14 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
         const { displayName, email, uid } = firebaseUser;
         const CustomUser:User = {
           uid,
-          name:displayName,
+          displayName,
           email,
           role:'',
           link:'',
           description:'',
-          image:'',
+          profileImageUrl:'',
+          address: '',
+          contactPerson: '',
         }
 
         try{
@@ -51,7 +55,9 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
             CustomUser.role = userData.role || '';
             CustomUser.link = userData.link || '';
             CustomUser.description = userData.description || '';
-            CustomUser.image = userData.image;
+            CustomUser.address = userData.address || '';
+            CustomUser.contactPerson = userData.contactPerson || '';
+            CustomUser.profileImageUrl = userData.profileImageUrl;
           }
         }catch(error){
           console.error("Error fetching user data", error)

@@ -13,7 +13,7 @@ import { v4 as uuid } from 'uuid';
 
 // Define the type for the form values
 interface FormValues {
-  companyName: string;
+  displayName: string;
   email: string;
   address: string;
   contactPerson: string;
@@ -23,7 +23,7 @@ interface FormValues {
 
 // Define the validation schema using Yup
 const validationSchema = Yup.object().shape({
-  companyName: Yup.string().required('Company Name is required'),
+  displayName: Yup.string().required('Company Name is required'),
   email: Yup.string().email('Invalid email address').required('Email is required'),
   address: Yup.string().required('Address is required'),
   contactPerson: Yup.string().required('Contact person is required'),
@@ -41,7 +41,7 @@ const validationSchema = Yup.object().shape({
 export default function CompanySignup() {
   // Define the signup handler
   const handleSignup = async (values: FormValues, { resetForm }: FormikHelpers<FormValues>) => {
-    const { companyName, email, address, contactPerson, password, profilePicture } = values;
+    const { displayName, email, address, contactPerson, password, profilePicture } = values;
 
     try {
       // Create user in Firebase Authentication
@@ -68,18 +68,18 @@ export default function CompanySignup() {
             const profileImageUrl = await getDownloadURL(uploadTask.snapshot.ref);
 
             // Generate a unique link for scheduling
-            const schedulingLink = `https://apoint.vervel.app/schedule/${companyName.replace(/\s+/g, '-').toLowerCase()}-${user.uid}`;
+            const schedulingLink = `https://apoint.vervel.app/schedule/${displayName.replace(/\s+/g, '-').toLowerCase()}-${user.uid}`;
 
             // Store additional user information in Firestore
-            await setDoc(doc(db, 'Companies', user.uid), {
+            await setDoc(doc(db, 'users', user.uid), {
               uid: user.uid,
-              companyName,
+              displayName,
               email,
               address,
               contactPerson,
               profileImageUrl,
               role: 'company',
-              schedulingLink,
+              link: schedulingLink,
             });
 
             toast.success('Account created successfully!');
@@ -100,7 +100,7 @@ export default function CompanySignup() {
       {/* Formik form */}
       <Formik
         initialValues={{
-          companyName: '',
+          displayName: '',
           email: '',
           address: '',
           contactPerson: '',
@@ -113,9 +113,9 @@ export default function CompanySignup() {
         {({ isSubmitting, setFieldValue }) => (
           <Form className="flex flex-col gap-4">
             <div className="gap-1 flex flex-col">
-              <label htmlFor="companyName" className="text-xs">Company Name</label>
-              <Field name="companyName" placeholder="Enter your company's name" className="border p-2 rounded" />
-              <ErrorMessage name="companyName" component="div" className="text-red-600 text-xs" />
+              <label htmlFor="displayName" className="text-xs">Company Name</label>
+              <Field name="displayName" placeholder="Enter your company's name" className="border p-2 rounded" />
+              <ErrorMessage name="displayName" component="div" className="text-red-600 text-xs" />
             </div>
 
             {/* Email */}

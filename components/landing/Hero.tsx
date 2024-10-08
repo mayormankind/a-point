@@ -47,7 +47,7 @@ export default function Hero({ setRole, signupRole }: any) {
         {/* Glassmorphism Effect */}
         <div className="absolute top-0 left-0 w-full h-full bg-light-blue-200 bg-opacity-30 backdrop-blur-md"></div>
         <div className="w-full max-w-5xl mx-auto p-4 lg:p-0 relative z-10">
-          <div className="flex w-full h-screen">
+          <div className="flex flex-col w-full h-screen md:flex-row">
             {/* Left Section: Headline and CTA */}
             <div className="flex flex-col gap-6 h-fit text-[#12305B] my-auto items-start text-sm w-full md:w-1/2">
               <h1 className='font-bold text-2xl md:text-3xl'>
@@ -67,7 +67,8 @@ export default function Hero({ setRole, signupRole }: any) {
             </div>
 
             {/* Right Section: Illustration Slider */}
-            <div className="hidden md:flex w-full md:w-1/2 items-center justify-center">
+            {/* <div className="hidden md:flex w-full md:w-1/2 items-center justify-center"> */}
+            <div className="flex w-full md:w-1/2 items-center justify-center">
               <Slider {...settings} className="w-2/3 mx-auto">
                 {illustrations.map((illustration, index) => (
                   <div key={index} className="flex justify-center">

@@ -40,10 +40,11 @@ export default function OurTeam() {
   }
 
     const team = [
-      {name: 'Makinde Mayowa', role: 'Developer', image: '/avatar.png',},
+      {name: 'Makinde Mayowa', role: 'Developer', image: '/1728363895379.jpg',},
       {name: 'Lawal Mercy', role: 'Analysis', image: '/avatar.png',},
-      {name: 'Lawal Rex', role: 'UI/UX developer', image: '/avatar.png',},
-      {name: 'Emily Ayomide', role: 'Financial Consulting', image: '/avatar.png',},
+      {name: 'Kaffi Eliakim', role: 'UI/UX developer', image: '/avatar.png',},
+      {name: 'Ikuwmelo Collins', role: 'UI/UX developer', image: '/avatar.png',},
+      {name: 'Kareem Ayomide', role: 'Financial Consulting', image: '/IMG-29241007-WA0026.jpg',},
       {name: 'Ijiyokun Jeremiah', role: 'Career Counseling', image: '/avatar.png',},
     ];
 

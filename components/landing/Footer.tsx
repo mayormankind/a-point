@@ -24,7 +24,8 @@ export default function Footer() {
   return (
     <div className='w-full h-full flex py-10 bg-blueShade text-[#ABABAB]'>
         <div className="flex flex-col gap-10 max-w-6xl mx-auto p-4 md:p-8">
-            <Image alt='SleepStiq logo' src={'/logo.png'} width={100} height={100} className='mx-auto'/>
+            {/* <Image alt='SleepStiq logo' src={'/logo.png'} width={100} height={100} className='mx-auto'/> */}
+            <h2 className='text-center text-xl'>A-point</h2>
             <div className="flex flex-col gap-4 md:flex-row md:gap-6">
                 <div className="mb-8 md:mb-0 w-full">
                     <h2 className="font-semibold text-white mb-4">Links</h2>
