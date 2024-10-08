@@ -68,7 +68,7 @@ export default function Hero({ setRole, signupRole }: any) {
 
             {/* Right Section: Illustration Slider */}
             {/* <div className="hidden md:flex w-full md:w-1/2 items-center justify-center"> */}
-            <div className="flex w-full md:w-1/2 items-center justify-center">
+            <div className="flex w-full w-1/2 items-center justify-center">
               <Slider {...settings} className="w-2/3 mx-auto">
                 {illustrations.map((illustration, index) => (
                   <div key={index} className="flex justify-center">
