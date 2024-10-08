@@ -18,7 +18,7 @@ export default function ClientProfile() {
           <img src="/avatar.png" alt="" className="w-20 h-20 rounded-full" />
           <div>
             <h1 className="font-bold text-2xl text-gray-800">{user?.displayName}</h1>
-            <h3 className="text-gray-600">Client</h3>
+            <h3 className="text-gray-600">{user?.displayName ? user?.displayName : 'Client'}</h3>
           </div>
         </div>
         <div className="mt-4">
