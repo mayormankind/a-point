@@ -68,7 +68,7 @@ export default function CompanySignup() {
             const profileImageUrl = await getDownloadURL(uploadTask.snapshot.ref);
 
             // Generate a unique link for scheduling
-            const schedulingLink = `https://your-app.com/schedule/${companyName.replace(/\s+/g, '-').toLowerCase()}-${user.uid}`;
+            const schedulingLink = `https://apoint.vervel.app/schedule/${companyName.replace(/\s+/g, '-').toLowerCase()}-${user.uid}`;
 
             // Store additional user information in Firestore
             await setDoc(doc(db, 'Companies', user.uid), {

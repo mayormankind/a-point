@@ -64,7 +64,7 @@ const ClientSignup = () => {
                   const profileImageUrl = await getDownloadURL(uploadTask.snapshot.ref);
       
                   // Store additional user information in Firestore
-                  await setDoc(doc(db, 'Companies', user.uid), {
+                  await setDoc(doc(db, 'users', user.uid), {
                     uid: user.uid,
                     fullName,
                     email,

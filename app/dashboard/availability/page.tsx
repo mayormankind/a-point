@@ -85,7 +85,11 @@ const AvailabilitySettings = () => {
         <label className="block text-sm mb-2">Block Specific Date (Holidays, Days Off):</label>
         <DatePicker
           selected={selectedBlockedDate}
-          onChange={(date: Date) => setSelectedBlockedDate(date)}
+          onChange={(date: Date | null) => {
+            if(date !== null){
+                setSelectedBlockedDate(date);
+            }
+        }}
           className="w-full"
           placeholderText="Select a date to block"
         />
