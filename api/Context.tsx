@@ -37,6 +37,7 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
     const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
       if (firebaseUser) {
         const { displayName, email, uid } = firebaseUser;
+        console.log(firebaseUser);
         const CustomUser:User = {
           uid,
           displayName,
@@ -50,7 +51,7 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
         }
 
         try{
-          const userDoc = doc(db,'user',uid);
+          const userDoc = doc(db,'users',uid);
           const snapshot = await getDoc(userDoc);
           if(snapshot.exists()){
             const userData = snapshot.data();

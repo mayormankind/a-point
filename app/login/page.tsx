@@ -64,7 +64,8 @@ export default function Login() {
                 <Field type="email" name="email" placeholder="Enter your email" className="border p-2 rounded" />
                 <ErrorMessage name="email" component="div" className="text-red-600 text-xs" />
               </div>
-              <div>
+              <div className="gap-1 flex flex-col">
+                <label htmlFor="password" className="text-xs">Password</label>
                 <Field type="password" name="password" placeholder="Enter a password" className="border p-2 rounded" />
                 <ErrorMessage name="password" component="div" className="text-red-600 text-xs" />
               </div>

@@ -1,10 +1,10 @@
 "use client"
 
-import { Divider } from '@chakra-ui/react';
+import { Divider, IconButton } from '@chakra-ui/react';
 // import { Close, Menu } from '@mui/icons-material'; 
 import Link from 'next/link';
 import React, { useState } from 'react';
-import { FaHome } from 'react-icons/fa';
+import { FaCopy, FaHome } from 'react-icons/fa';
 import { RiCloseFill, RiMenu4Fill } from 'react-icons/ri';
 import { useUser } from '@/api/Context';
 
@@ -39,8 +39,7 @@ export default function Profile() {
           </div>
           <div className="flex gap-8 items-center">
             <img
-              src="/avatar.png"
-              alt="Profile Image"
+              src={user?.profileImageUrl ? user?.profileImageUrl : "/avatar.png"} alt="Profile Image"
               className="w-20 h-20 rounded-full object-cover"
             />
             <div className="flex flex-col">
@@ -54,7 +53,11 @@ export default function Profile() {
           </div>
         </div>
         <Divider />
-        {/* <hr className="my-4" /> */}
+        <div className='flex w-full px-4 py-6 border border-gray-500 '>
+          <p className='m-auto'>{user?.link}</p>
+          <IconButton aria-label={'copy to clipboard'} icon={<FaCopy/>} variant='ghost'/>
+        </div>
+        <Divider />
         <ul className="font-semibold text-gray-700">
           <li className="px-6 py-3 cursor-pointer hover:bg-blue-400 hover:text-white transition">
             <Link href="/settings/edit-profile">Edit Profile</Link>
